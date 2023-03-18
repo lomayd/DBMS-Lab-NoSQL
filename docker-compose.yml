@@ -1,0 +1,34 @@
+version: '3.1'
+services:
+  # redis command에 redis_password에 password 적기
+  redis:
+    container_name: redis
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass {redis_password} --port 6379
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=
+  elasticsearch:
+    container_name: elasticsearch
+    image: elasticsearch:latest
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      ELASTIC_PASSWORD:
+  kibana:
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:latest
+    ports:
+        - "5601:5601"
+    environment:
+        ELASTICSERCH_UTL: http://elasticsearch:9200
+        ELASTICSEARCH_HOSTS: http://elasticsearch:9200
