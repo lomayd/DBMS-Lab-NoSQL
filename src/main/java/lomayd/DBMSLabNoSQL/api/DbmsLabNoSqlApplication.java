@@ -1,4 +1,4 @@
-package lomayd.DBMSLabNoSQL;
+package lomayd.DBMSLabNoSQL.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
