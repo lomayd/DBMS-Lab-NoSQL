@@ -1,5 +1,12 @@
 version: '3.1'
 services:
+  # Ports are not available Error 발생시 (netstat -ano | findstr {PORT NO.} 해도 아무것도 안 나올 때):
+  # PowerShell(관리자 권한으로 실행)
+  # netsh interface ipv4 show excludedportrange protocol=tcp
+  # net stop winnat
+  # netsh int ipv4 add excludedportrange protocol=tcp startport={PORT NO.} numberofports=1
+  # net start winnat
+
   # redis command에 redis_password에 password 적기
   redis:
     container_name: redis
@@ -7,6 +14,7 @@ services:
     ports:
       - "6379:6379"
     command: redis-server --requirepass {redis_password} --port 6379
+
   mongodb:
     container_name: mongodb
     image: mongo:latest
@@ -15,6 +23,7 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=
+
   elasticsearch:
     container_name: elasticsearch
     image: elasticsearch:7.17.4
@@ -29,6 +38,7 @@ services:
       - discovery.type=single-node
       - ES_JAVA_OPTS=-Xms512m -Xmx512m
     user: root
+
   kibana:
     container_name: kibana
     image: docker.elastic.co/kibana/kibana:7.13.0
