@@ -1,10 +1,10 @@
-package lomayd.DBMSLabNoSQL.api.user;
+package lomayd.DBMSLabNoSQL.api.user.mongodb;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="User")
+@Document(collection="mongodbuser")
 @Builder
 @Getter
 @Setter

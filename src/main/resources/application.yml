@@ -3,13 +3,14 @@ spring:
     host: 127.0.0.1
     port: 6379
     password:
-  mongodb:
-    host: 127.0.0.1
-    port: 27017
-    database: LAB
-    username: admin
-    password:
-    authentication-database: admin
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: LAB
+      username: admin
+      password:
+      authentication-database: admin
   elasticsearch:
     host: 127.0.0.1
     port: 9200

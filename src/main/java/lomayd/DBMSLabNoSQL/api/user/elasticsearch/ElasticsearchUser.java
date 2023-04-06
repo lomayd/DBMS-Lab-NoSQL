@@ -1,10 +1,10 @@
-package lomayd.DBMSLabNoSQL.api.user;
+package lomayd.DBMSLabNoSQL.api.user.elasticsearch;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-@Document(indexName = "User")
+@Document(indexName = "elasticsearchuser")
 @Builder
 @Getter
 @Setter

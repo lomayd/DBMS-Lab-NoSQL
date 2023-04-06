@@ -7,7 +7,10 @@ services:
   # netsh int ipv4 add excludedportrange protocol=tcp startport={PORT NO.} numberofports=1
   # net start winnat
 
-  # redis command에 redis_password에 password 적기
+  # redis 사용 방법:
+  # docker exec -it redis bash
+  # redis-cli
+  # auth {redis_password}
   redis:
     container_name: redis
     image: redis:latest
@@ -15,15 +18,23 @@ services:
       - "6379:6379"
     command: redis-server --requirepass {redis_password} --port 6379
 
+  # mongodb 사용 방법:
+  # docker exec -it mongodb bash
+  # mongosh -u admin -p {mongodb_password}
   mongodb:
     container_name: mongodb
     image: mongo:latest
     ports:
       - "27017:27017"
     environment:
+      - MONGO_INITDB_DATABASE=LAB
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=
 
+  # elasticsearch 사용 방법:
+  # 주소창에 다음과 같이 입력(kibana 접속) -> localhost:5601
+  # Management -> Dev Tools
+  # 조회는 주소창에 다음과 같이 입력 -> localhost:9200/{indexName}/_doc/{id}?pretty=true
   elasticsearch:
     container_name: elasticsearch
     image: elasticsearch:7.17.4

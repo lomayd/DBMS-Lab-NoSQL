@@ -1,10 +1,15 @@
-package lomayd.DBMSLabNoSQL.api.user;
+package lomayd.DBMSLabNoSQL.api.user.redis;
 
-import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
-@RedisHash(value = "Users")
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@RedisHash(value = "redisuser")
 @Builder
 @Getter
 @Setter
@@ -14,7 +19,6 @@ public class RedisUser {
 
     @Id
     private String id;
-
     private String password;
     private String name;
     private String nickname;
